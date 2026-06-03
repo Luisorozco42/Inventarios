@@ -15,21 +15,21 @@ public class ProductoServicio implements IProductoServicio {
 
     @Override
     public List<Producto> listarProductos() {
-        return productoRepositorio.findAll();
+        return this.productoRepositorio.findAll();
     }
 
     @Override
     public Producto buscarProductoPorId(Integer idProducto) {
-        return productoRepositorio.findById(idProducto).orElse(null);
+        return this.productoRepositorio.findById(idProducto).orElse(null);
     }
 
     @Override
-    public void guardarProducto(Producto producto) {
-        productoRepositorio.save(producto);
+    public Producto guardarProducto(Producto producto) {
+        return this.productoRepositorio.save(producto);
     }
 
     @Override
     public void eliminarProductoPorId(Integer idProducto) {
-        productoRepositorio.deleteById(idProducto);
+        this.productoRepositorio.deleteById(idProducto);
     }
 }
