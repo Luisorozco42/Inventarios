@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import gm.inventarios.Excepcion.RecursoNoEncontradoExepcion;
+import gm.inventarios.Excepcion.RecursoNoEncontradoExcepcion;
 
 import org.slf4j.Logger;
 
@@ -43,7 +43,7 @@ public class ProductoControlador {
         if(producto != null) {
             return ResponseEntity.ok(producto);
         }else{
-            throw new RecursoNoEncontradoExepcion("No se encontro el id: " + id);
+            throw new RecursoNoEncontradoExcepcion("No se encontro el id: " + id);
         }
     }
 }
