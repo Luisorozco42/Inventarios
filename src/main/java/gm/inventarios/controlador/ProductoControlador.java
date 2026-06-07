@@ -10,7 +10,9 @@ import gm.inventarios.Excepcion.RecursoNoEncontradoExcepcion;
 
 import org.slf4j.Logger;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("inventario-app") //http://localhost:8080/inventario-app
@@ -60,5 +62,18 @@ public class ProductoControlador {
             this.productoServicio.guardarProducto(producto);
             return ResponseEntity.ok(producto);
         }else throw new RecursoNoEncontradoExcepcion("No se encontro el id del producto a editar: " + id);
+    }
+
+    @DeleteMapping("/productos/{id}")
+    public ResponseEntity<Map<String, Boolean>> eliminarProducto(@PathVariable int id) {
+        Producto producto = this.productoServicio.buscarProductoPorId(id);
+        if (producto == null){
+            throw new RecursoNoEncontradoExcepcion("No se encontro el id:" + id)
+        }
+        this.productoServicio.eliminarProductoPorId(id);
+        Map<String, Boolean> respuesta = new HashMap<>();
+        respuesta.put("Eliminado", Boolean.TRUE);
+
+        return ResponseEntity.ok(respuesta);
     }
 }
