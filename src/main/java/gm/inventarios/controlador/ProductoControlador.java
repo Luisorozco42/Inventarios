@@ -68,7 +68,7 @@ public class ProductoControlador {
     public ResponseEntity<Map<String, Boolean>> eliminarProducto(@PathVariable int id) {
         Producto producto = this.productoServicio.buscarProductoPorId(id);
         if (producto == null){
-            throw new RecursoNoEncontradoExcepcion("No se encontro el id:" + id)
+            throw new RecursoNoEncontradoExcepcion("No se encontro el id:" + id);
         }
         this.productoServicio.eliminarProductoPorId(id);
         Map<String, Boolean> respuesta = new HashMap<>();
